@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
+    const navigate = useNavigate();
     const [transactions, setTransactions] = useState([]);
     const [selectedTransaction, setSelectedTransaction] = useState(null);
     const [filter, setFilter] = useState('All');
@@ -10,7 +11,6 @@ const Dashboard = () => {
     const [sortOrder, setSortOrder] = useState('DateDesc');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    const navigate = useNavigate();
     const userId = localStorage.getItem('userId');
 
 
@@ -20,7 +20,8 @@ const Dashboard = () => {
     const handleDeleteTransaction = async (transactionId) => {
         try {
             console.log(transactionId);
-            const response = await fetch('https://money-flow-web-app-1.onrender.com/api/transaction/delete', {
+            // const response = await fetch('https://money-flow-web-app-1.onrender.com/api/transaction/delete', {
+            const response = await fetch('https://localhost:5000/api/transaction/delete', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,6 +46,7 @@ const Dashboard = () => {
 
         try {
             const response = await fetch(`https://money-flow-web-app-1.onrender.com/api/transaction/${userId}`);
+            // const response = await fetch(`http://localhost:5000/api/transaction/${userId}`);
             const data = await response.json();
             console.log('Fetched transactions:', data);
 

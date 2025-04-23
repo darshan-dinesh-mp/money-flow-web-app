@@ -21,6 +21,7 @@ const Signup = () => {
 
         try {
             const response = await fetch('https://money-flow-web-app-1.onrender.com/api/signup', {
+            // const response = await fetch('http://localhost:5000/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,7 +30,7 @@ const Signup = () => {
             });
 
             const result = await response.json();
-            if (response.ok) {
+            if (result.message) {
                 setSuccess(result.message);
                 setName('');
                 setEmail('');

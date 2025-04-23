@@ -20,6 +20,7 @@ const EditTransaction = () => {
         e.preventDefault();
         try {
             const response = await fetch(`https://money-flow-web-app-1.onrender.com/api/transaction/edit`, {
+            // const response = await fetch(`http://localhost:5000/api/transaction/edit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +38,7 @@ const EditTransaction = () => {
             });
 
             const result = await response.json();
-            if (response.ok) {
+            if (result.message) {
                 navigate('/');
             } else {
                 setError(result.error || 'Failed to update transaction');

@@ -28,13 +28,11 @@ export const createTransaction = async (req, res) => {
 
 export const deleteTransaction = async (req, res) => {
     const { transactionId } = req.body;
-    console.log(transactionId);
     try {
         const transactionDocRef = doc(db, "Transaction", transactionId);
         await deleteDoc(transactionDocRef);
         res.status(200).json({ message: "Transaction deleted", id: transactionId });
     } catch (error) {
-        console.error(error);
         res.status(400).json({ error: error.message });
     }
 }

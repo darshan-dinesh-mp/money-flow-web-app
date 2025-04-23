@@ -12,7 +12,10 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
+            console.log('Email:', email);
+            console.log('Password:', password);
             const response = await fetch('https://money-flow-web-app-1.onrender.com/api/login', {
+            // const response = await fetch('http://localhost:5000/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -21,7 +24,8 @@ const Login = () => {
             });
 
             const result = await response.json();
-            if (response.ok) {
+            console.log('Response:', result.message);
+            if (result.message) {
                 localStorage.setItem('userId', result.userData.uid);
                 localStorage.setItem('username', result.userData.name);
                 setSuccess(result.message);

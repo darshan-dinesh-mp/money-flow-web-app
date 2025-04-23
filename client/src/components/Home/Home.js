@@ -6,18 +6,18 @@ import AddTransaction from '../Transaction/AddTransaction';
 import EditTransaction from '../Transaction/EditTransaction';
 
 const Home = () => {
-    const [activeTab, setActiveTab] = useState('dashboard');
     const navigate = useNavigate();
     const location = useLocation();
-    const isAuthenticated = !!localStorage.getItem('userId');
+    const [activeTab, setActiveTab] = useState('dashboard');
     const username = localStorage.getItem('username');
     const transactionToEdit = location.state?.transaction || null;
-
+    
     useEffect(() => {
+        const isAuthenticated = localStorage.getItem('userId');
         if (!isAuthenticated) {
             navigate('/login');
         }
-    }, [navigate, isAuthenticated]);
+    });
 
     const handleTabChange = (tab) => {
         setActiveTab(tab);

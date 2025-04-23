@@ -17,6 +17,7 @@ const AddTransaction = () => {
     e.preventDefault();
     try {
       const response = await fetch('https://money-flow-web-app-1.onrender.com/api/transaction/insert', {
+      // const response = await fetch('http://localhost:5000/api/transaction/insert', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,7 +26,7 @@ const AddTransaction = () => {
       });
 
       const result = await response.json();
-      if (response.ok) {
+      if (result.message) {
         window.location.reload();
       } else {
         setError(result.error);
