@@ -20,8 +20,8 @@ const Dashboard = () => {
     const handleDeleteTransaction = async (transactionId) => {
         try {
             console.log(transactionId);
-            // const response = await fetch('https://money-flow-web-app-1.onrender.com/api/transaction/delete', {
-            const response = await fetch('https://localhost:5000/api/transaction/delete', {
+            const response = await fetch('https://money-flow-web-app-1.onrender.com/api/transaction/delete', {
+                // const response = await fetch('https://localhost:5000/api/transaction/delete', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
